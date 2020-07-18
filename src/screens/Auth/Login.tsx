@@ -99,11 +99,6 @@ const LoginScreen = () => {
     [],
   );
 
-  // const rotate = translationYRef.current.interpolate({
-  // 	inputRange: [-100, 100],
-  // 	outputRange: ['-25deg', '25deg'],
-  // });
-
   const buttonY = buttonOpacity.current.interpolate({
     inputRange: [0, 1],
     outputRange: [100, 0],
