@@ -47,9 +47,9 @@ const StackNav = () => {
           headerShown: false,
         }}
         sharedElementsConfig={(route, otherRoute, showing) => {
-          const {data} = route.params;
+          const {item} = route.params;
 
-          return [data.id];
+          return [item.id];
         }}></Stack.Screen>
     </Stack.Navigator>
   );

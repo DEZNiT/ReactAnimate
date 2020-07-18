@@ -63,29 +63,7 @@ const ImageCard = ({address, status, onClick, img, id}: CardProps) => {
             color={buttonColor}
             iconButton={true}
             title={status}
-            shadow={false}>
-            {/* <Component
-      style={{
-        marginTop: 3,
-      }}></Component> */}
-          </Button>
-          {/* <Button
-    buttonViewStyle={{
-      borderRadius: 10,
-      paddingHorizontal: 8,
-      paddingVertical: 5,
-    }}
-    onPress={addFn}
-    size="s"
-    color="white"
-    iconButton={true}
-    shadow={false}>
-    <Icons.Ionicons
-      name="ios-chevron-forward"
-      size={28}
-      color={Color.success}
-    />
-  </Button> */}
+            shadow={false}></Button>
         </View>
       </View>
     </>
@@ -104,6 +82,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     width: width * 0.85,
     height: 250,
+    zIndex: 0,
   },
 
   containerStyle: {
@@ -113,7 +92,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: width * 0.85,
     height: 250,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    // backgroundColor: 'rgba(0,0,0,0.5)',
+    zIndex: 10,
   },
 
   addressContainer: {
@@ -130,5 +110,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 20,
     right: 20,
+  },
+
+  overlay: {
+    backgroundColor: 'red',
   },
 });

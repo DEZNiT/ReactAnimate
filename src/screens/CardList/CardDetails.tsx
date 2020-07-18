@@ -12,14 +12,14 @@ import {Text} from '../../assets/components';
 import {SharedElement} from 'react-navigation-shared-element';
 const {width, height} = Dimensions.get('window');
 const CardDetailsScreen = ({navigation, route}: any) => {
-  const {data} = route.params;
+  const {item} = route.params;
 
-  //   console.log('===========>' + typeof data.data.id);
+  //   console.log('===========>' + typeof item.item.id);
   return (
     <View>
-      <View style={styles.overlay}></View>
-      <SharedElement id={data.id}>
-        <Image style={styles.image} resizeMode="cover" source={data.img} />
+      {/* <View style={styles.overlay}></View> */}
+      <SharedElement id={item.id}>
+        <Image style={styles.image} resizeMode="cover" source={item.img} />
       </SharedElement>
       <TouchableOpacity
         style={styles.closeButton}
