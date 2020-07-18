@@ -7,6 +7,7 @@ import {
   Dimensions,
   SafeAreaView,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import {Text, Button} from '../../assets/components';
 import {SharedElement} from 'react-navigation-shared-element';
@@ -14,52 +15,52 @@ import {SharedElement} from 'react-navigation-shared-element';
 const {width, height} = Dimensions.get('window');
 const CardDetailsScreen = ({navigation, route}: any) => {
   const {item} = route.params;
-
+  const buttonColor = item.status == 'Vacant' ? 'warning' : 'success';
   //   console.log('===========>' + typeof item.item.id);
   return (
     <View>
-      {/* <View style={styles.overlay}></View> */}
-      <SharedElement id={item.id}>
-        <Image style={styles.image} resizeMode="cover" source={item.img} />
-      </SharedElement>
-      <TouchableOpacity
-        style={styles.closeButton}
-        onPress={() => navigation.goBack()}>
-        <Text>X</Text>
-      </TouchableOpacity>
-      {/* <SharedElement id={`item.${item.id}.overlay`} style={styles.overlay}>
-        <View></View>
-      </SharedElement> */}
-      <View style={styles.containerStyle}>
-        <SharedElement
-          id={`item.${item.id}.add`}
-          style={styles.addressContainer}>
-          <Text
-            fontColor="white"
-            size="l"
-            fontFamily="medium"
-            textStyle={styles.addressStyle}>
-            {item.address}
-          </Text>
+      <ScrollView style={{height: height}}>
+        {/* <View style={styles.overlay}></View> */}
+        <SharedElement id={item.id}>
+          <Image style={styles.image} resizeMode="cover" source={item.img} />
         </SharedElement>
-        <View style={styles.buttonContainerStyle}>
-          <SharedElement id={`item.${item.id}.button`}>
-            <Button
-              buttonViewStyle={{width: 110, marginRight: 20, padding: 5}}
-              buttonTextStyle={{
-                fontSize: 16,
-                flex: 1,
-                flexDirection: 'row',
-                alignContent: 'space-between',
-              }}
-              size="s"
-              color="success"
-              iconButton={true}
-              title={item.status}
-              shadow={false}></Button>
+        <TouchableOpacity
+          style={styles.closeButton}
+          onPress={() => navigation.goBack()}>
+          <Text>X</Text>
+        </TouchableOpacity>
+
+        <View style={styles.containerStyle}>
+          <SharedElement id={`item.${item.id}.overlay`}>
+            <View style={styles.box}></View>
           </SharedElement>
+          <SharedElement
+            id={`item.${item.id}.add`}
+            style={styles.addressContainer}>
+            <Text
+              fontColor="white"
+              size="l"
+              fontFamily="medium"
+              textStyle={styles.addressStyle}>
+              {item.address}
+            </Text>
+          </SharedElement>
+          <View style={styles.buttonContainerStyle}>
+            <SharedElement id={`item.${item.id}.button`}>
+              <Button
+                buttonViewStyle={{width: 110, marginRight: 20, padding: 5}}
+                buttonTextStyle={{
+                  fontSize: 16,
+                }}
+                size="s"
+                color={buttonColor}
+                iconButton={true}
+                title={item.status}
+                shadow={false}></Button>
+            </SharedElement>
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -67,6 +68,14 @@ const CardDetailsScreen = ({navigation, route}: any) => {
 export default CardDetailsScreen;
 
 const styles = StyleSheet.create({
+  box: {
+    width: width,
+    height: width,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  },
   overlay: {
     backgroundColor: 'rgba(0,0,0,0.5)',
     width,
