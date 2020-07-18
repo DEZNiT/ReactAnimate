@@ -39,9 +39,11 @@ const ImageCard = ({address, status, onClick, img, id}: CardProps) => {
       <SharedElement id={id}>
         <Image style={styles.imageStyle} source={img}></Image>
       </SharedElement>
-
+      {/* <SharedElement id={`item.${id}.overlay`} style={styles.overlay}>
+        <View></View>
+      </SharedElement> */}
       <View style={styles.containerStyle}>
-        <View style={styles.addressContainer}>
+        <SharedElement id={`item.${id}.add`} style={styles.addressContainer}>
           <Text
             fontColor="white"
             size="l"
@@ -49,21 +51,23 @@ const ImageCard = ({address, status, onClick, img, id}: CardProps) => {
             textStyle={styles.addressStyle}>
             {address}
           </Text>
-        </View>
+        </SharedElement>
         <View style={styles.buttonContainerStyle}>
-          <Button
-            buttonViewStyle={{width: 110, marginRight: 20, padding: 5}}
-            buttonTextStyle={{
-              fontSize: 16,
-              flex: 1,
-              flexDirection: 'row',
-              alignContent: 'space-between',
-            }}
-            size="s"
-            color={buttonColor}
-            iconButton={true}
-            title={status}
-            shadow={false}></Button>
+          <SharedElement id={`item.${id}.button`}>
+            <Button
+              buttonViewStyle={{width: 110, marginRight: 20, padding: 5}}
+              buttonTextStyle={{
+                fontSize: 16,
+                flex: 1,
+                flexDirection: 'row',
+                alignContent: 'space-between',
+              }}
+              size="s"
+              color={buttonColor}
+              iconButton={true}
+              title={status}
+              shadow={false}></Button>
+          </SharedElement>
         </View>
       </View>
     </>
@@ -92,7 +96,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: width * 0.85,
     height: 250,
-    // backgroundColor: 'rgba(0,0,0,0.5)',
     zIndex: 10,
   },
 
@@ -113,6 +116,13 @@ const styles = StyleSheet.create({
   },
 
   overlay: {
-    backgroundColor: 'red',
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    borderRadius: 20,
+    position: 'absolute',
+    // top: 20,
+    alignSelf: 'center',
+    width: width * 0.85,
+    height: 250,
+    zIndex: 1,
   },
 });

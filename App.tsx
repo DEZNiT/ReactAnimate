@@ -45,11 +45,20 @@ const StackNav = () => {
         component={CardDetailsScreen}
         options={{
           headerShown: false,
+          cardStyleInterpolator: ({current: {progress}}) => {
+            return {cardStyle: {opacity: progress}};
+          },
         }}
         sharedElementsConfig={(route, otherRoute, showing) => {
           const {item} = route.params;
 
-          return [item.id];
+          return [
+            {id: item.id},
+
+            {id: `item.${item.id}.overlay`},
+            {id: `item.${item.id}.button`},
+            {id: `item.${item.id}.add`},
+          ];
         }}></Stack.Screen>
     </Stack.Navigator>
   );

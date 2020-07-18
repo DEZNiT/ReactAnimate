@@ -60,14 +60,14 @@ const CardListScreen = ({navigation}: any) => {
             img={item.img}
             address={item.address}
             status={item.status}></ImageCard>
-          <View
+          {/* <View
             style={{
               marginHorizontal: 25,
               marginVertical: 10,
               width: width / 2,
             }}>
             <Text>{item.address}</Text>
-          </View>
+          </View> */}
           {/* <View style={styles.details}>
             <View style={styles.superhost}>
               <Text textStyle={styles.superhostLabel}>{item.status}</Text>
